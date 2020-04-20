@@ -113,5 +113,5 @@ gg_Rt <- ggplot(Rt_df_smry, aes(x = Date, y = Rt)) +
   geom_hline(yintercept=1, lty=2) +
   scale_y_continuous(breaks=seq(0,6, by=1)) +
   scale_x_date(date_breaks = "2 week") +
-  coord_cartesian(ylim = c(0,5))
+  coord_cartesian(ylim = c(0,5)) + theme_bw()
 gg_Rt
