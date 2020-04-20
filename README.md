@@ -4,18 +4,18 @@ This is the public code repository for the manuscript:
 
 "Felix Günther, Andreas Bender, Katharina Katz, Helmut Küchenhoff, Michael Höhle: Nowcasting the COVID-19 Pandemic in Bavaria"
 
-The folder 'data_public' contains the file "data.public.csv" (tab-separated) with individual-specific information on the
+The folder 'data_public' contains the datafile "data_public.csv" (tab-separated) with individual-specific information on the
 reporting date and (artificial) age, and disease onset date (i.e. symptom onset date) for all Bavarian COVID-19 cases up
-until 2020-04-09 (and after 2020-03-01, excluding the first known 16 cases).
+until 2020-04-09 (registered after 2020-03-01, excluding the first known 16 cases).
 
 The artificial data was created the following way:
-We utilize for each of the 29246 cases the official reporting date at LGL and sample an artifical age based on a truncated normal distribution with mean=50, sd=15 and truncation 5 and 100 years, corresponding roughly to the observed age distribution in the original data. Based on an individuals' age, the reporting week and weekday, we sample the expected reporting delay from the original Weibull GAMLSS imputation model and derive the artificial disease onset date for each case.
-We remove the onset date for 16175 randomly selected cases, yielding an available disease onset date for 13087 cases (approx. 45% as in the original data).
-The dataset consets reporting date, onset date (if available, otherwise NA), and artificial age for 29246 cases.
+We utilize for each of the 29246 cases the official reporting date at LGL and sampled an artifical age based on a truncated normal distribution with mean=50, sd=15 and truncation 5 and 100 years, corresponding roughly to the observed age distribution in the original data. Based on an individuals' age, the reporting week and weekday, we sampled the expected reporting delay from the original Weibull GAMLSS imputation model and derived the artificial disease onset date for each case.
+We removed the onset date for 16175 randomly selected cases, yielding an available disease onset date for 13087 cases (approx. 45%, as in the original data).
+The dataset consets reporting date, artificial onset date (if available, otherwise NA), and artificial age for 29246 cases.
 
 The folder 'code_public' contains code to estimate nowcasts and the time-dependent case reproduction number R(t)
 based on a hierarchical bayesian model (nowcast) and the method of Wallinga and Teunis (2004) for R(t) as described
-in the manuscript. The code is structured as follows:
+in the manuscript and performed on the original data. The code is structured as follows:
 
 - File 1_analysis.R contains all necessary steps for performing the nowcast and estimating R(t) by calling functions from file analysis_fun.R
 
