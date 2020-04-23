@@ -4,6 +4,8 @@ This is the public code repository for the manuscript:
 
 "Felix Günther, Andreas Bender, Katharina Katz, Helmut Küchenhoff, Michael Höhle: Nowcasting the COVID-19 Pandemic in Bavaria"
 
+Code was mainly written by Günther, Bender, Höhle. We thank Titus Laska for initial code on the R(t) estimation.
+
 The folder 'data_public' contains the datafile "data_public.csv" (tab-separated) with individual-specific information on the
 reporting date and (artificial) age, and disease onset date (i.e. symptom onset date) for all Bavarian COVID-19 cases up
 until 2020-04-09 (registered after 2020-03-01, excluding the first known 16 cases).
