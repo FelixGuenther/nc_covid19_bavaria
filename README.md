@@ -33,8 +33,10 @@ in the manuscript and performed on the original data. The code is structured as 
 Results of the nowcast are written to the 'results_public' folder
 In case of questions, feel free to contact felix.guenther(at)stat.uni-muenchen.de.
 
-Additionally to the nowcast code we provide code for analysing the epidemic curve resulting from Nowcasting using segmented regression. A manuscript for the analysis of the Bavarian data (in German) can be found here:
+## Segmented regression
+Additionally to the nowcast code we provide code for analysing the epidemic curve (estimated based on the nowcast) using segmented regression. A manuscript for the analysis of the Bavarian data (in German) can be found here:
 https://www.stablab.stat.uni-muenchen.de/_assets/docs/analyse_covid19_bayern.pdf
 
-In 'code public' we provide the file '2_bp_analysis.R' that implements the performed analysis based on the results of the nowcast from the 'reslts_public' folder. Functions to estimate the segmented regression models are implemtend in 'breakpoint_fun.R'. One of the functions is based on a discrete optimization over all possible combinations of breaktpoints using quais-poisson regression implemented in the 'glm' function. The second function estimates the segmented regression using the 'segmented::segmented' function.
+In 'code public' we provide the file '2_bp_analysis.R' that implements the performed analysis based on the results of the nowcast from the 'results_public' folder. 
+Functions to estimate the segmented regression models are implemtend in 'breakpoint_fun.R'. One of the functions is based on discrete optimization over all possible combinations of breakpoints using quasi-poisson regression based on the 'glm' function. The second function estimates the segmented regression model using the 'segmented::segmented' function.
 
