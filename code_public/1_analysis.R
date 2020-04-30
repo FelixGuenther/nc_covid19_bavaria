@@ -39,6 +39,16 @@ nc_res[[4]]
 # Fig 3
 nc_res[[5]]
 
+# Save nowcast results
+nc_res_dat = nc_res$plot_dat
+nc_res_dat = pivot_wider(nc_res_dat, id_cols = date, names_from = c("type","pred_type")) %>% arrange(date) %>%
+  mutate(reported_new_cases = replace_na(reported_new_cases_predicted, 0)) %>%
+  dplyr::select(date, reported_new_cases, bayes_wd_tps_predicted, bayes_wd_tps_predicted_lower, 
+                bayes_wd_tps_predicted_upper, bayes_wd_iidLogGa_predicted, bayes_wd_iidLogGa_predicted_lower,
+                bayes_wd_iidLogGa_predicted_upper)
+write.table(nc_res_dat, file = paste0("../results_public/nowcasting_results_", data_date,".csv"), 
+            dec = ".", sep = "\t", quote = FALSE, row.names = FALSE)
+
 ## Estimation R0
 library(R0)
 library(EpiEstim)
@@ -71,9 +81,9 @@ end_Rt_estim <- now - most_secondary_transmissions_occurred + 1
 # each row is one sample from posterior
 posterior_samples <- sample_from_nc_posterior(nc, n_sample = 1000)
 
+# Apply R0 estimation to to each sampled timeseries of new daily cases
 library(future)
 plan("multicore")
-# Apply R0 estimatio to to each sampled timeseries of new daily cases
 options(mc.cores = 6)
 Rt_est_list <- furrr::future_map(
   .x = seq_len(nrow(posterior_samples)),
@@ -86,7 +96,7 @@ Rt_est_list <- furrr::future_map(
       correct = TRUE,
       begin   = time_2ndcase,
       end     = end_Rt_estim,
-      nsim    = 1000)
+      nsim    = 100)
   }
 )
 
