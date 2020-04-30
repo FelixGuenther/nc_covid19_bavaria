@@ -1,5 +1,6 @@
 # nc_covid19_bavaria
 
+## Nowcast
 This is the public code repository for the manuscript:
 
 "Felix Günther, Andreas Bender, Katharina Katz, Helmut Küchenhoff, Michael Höhle: Nowcasting the COVID-19 Pandemic in Bavaria"
