@@ -112,8 +112,8 @@ estimate_bp_segmented = function(data, bp = 3, start_bp = c(18,23,54),
   bp_plot = ggplot() +
     geom_col(data = dat, aes(x=t, y=nc),
              col = "grey", fill = "lightgrey") +
-    geom_rect(aes(xmin=break_points$bp_lwr,
-                  xmax=break_points$bp_upr, ymin=0, ymax=Inf), fill = "steelblue", alpha = 0.25)+
+    geom_rect(aes(xmin=floor(break_points$bp_lwr),
+                  xmax=ceiling(break_points$bp_upr), ymin=0, ymax=Inf), fill = "steelblue", alpha = 0.25)+
     geom_line(aes(x=seq(0,max(dat$t), 0.1), 
                   y=predict(segmented, newdata = data.frame(t=seq(0,max(dat$t), 0.1)),
                             type = "response")), 
