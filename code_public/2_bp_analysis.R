@@ -6,7 +6,7 @@ source("./breakpoint_fun.R")
 # Load data
 dat = read_tsv("../results_public/nowcasting_results_2020-04-09.csv")
 # Adjust data to contain only columns 'date' and 'nc'
-dat = dat %>% mutate(nc = bayes_wd_tps_predicted) %>%
+dat = dat %>% mutate(nc = med) %>%
   dplyr::select(date, nc)
 
 # Estimate breakpoint model (with three breakpoints) based on discrete optimization

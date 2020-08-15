@@ -17,7 +17,7 @@ until 2020-04-09 (registered after 2020-03-01, excluding the first known 16 case
 The artificial data was created the following way:
 We utilize for each of the 29246 cases the official reporting date at LGL and sampled an artifical age based on a truncated normal distribution with mean=50, sd=15 and truncation 5 and 100 years, corresponding roughly to the observed age distribution in the original data. Based on an individuals' age, the reporting week and weekday, we sampled the expected reporting delay from the original Weibull GAMLSS imputation model and derived the artificial disease onset date for each case.
 We removed the onset date for 16175 randomly selected cases, yielding an available disease onset date for 13087 cases (approx. 45%, as in the original data).
-The dataset consets reporting date, artificial onset date (if available, otherwise NA), and artificial age for 29246 cases.
+The dataset contains reporting date at regional health authority, artificial onset date (if available, otherwise NA), and artificial age for 29246 cases.
 
 The folder 'code_public' contains code to estimate nowcasts and the time-dependent case reproduction number R(t)
 based on a hierarchical bayesian model (nowcast) and the method of Wallinga and Teunis (2004) for R(t) as described
@@ -25,7 +25,7 @@ in the manuscript and performed on the original data. The code is structured as 
 
 - File 1_analysis.R contains all necessary steps for performing the nowcast and estimating R(t) by calling functions from file analysis_fun.R
 
-- File analysis_fun.R contains the documented functions (1) summarize_data, (2) perform_imputation and (3) estimate_nowcasts for the main analysis steps of the nowcasting. (1) summarizes the observed delay distribution, (2) estimates the imputation GAMLSS and performs the imputation, and (3) performs 3 different nowcasts.
+- File analysis_fun.R contains the documented functions (1) summarize_data, (2) perform_imputation and (3) estimate_nowcasts for the main analysis steps of the nowcasting. (1) summarizes the observed delay distribution, (2) estimates the imputation GAMLSS and performs the imputation, and (3) performs nowcasting by a Bayesian hierarchical model implemented in rstan.
 
 - analysis_fun.R implements two more helper functions that are called during nowcasting and further helper functions can be found in the subfolder 'general'
 
