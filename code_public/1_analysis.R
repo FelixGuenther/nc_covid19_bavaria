@@ -40,7 +40,7 @@ imputed_data = imputation_res[[1]]
 # Define current date
 data_date = ymd("2020-04-09")
 # Compute nowcasts (requires working rjags installation on device),
-# Results and diagnostic plots can automatically be safed (see documentation in './analysis_fun.R')
+# Results can be automatically be safed (see documentation in './analysis_fun.R')
 nc_res = estimate_nowcasts(imputed_data = imputed_data,
                            data_date = data_date,
                            safePredictLag = 2, 

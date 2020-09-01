@@ -26,7 +26,8 @@ summarise_stan_fit = function(fit, dataDays, predLag, dat_mod, D, now) {
                            q25 = ifelse(date<=now-D, observed, q25),
                            q75 = ifelse(date<=now-D, observed, q75),
                            q95 = ifelse(date<=now-D, observed, q95),
-                           q975 = ifelse(date<=now-D, observed, q975))
+                           q975 = ifelse(date<=now-D, observed, q975)) %>% 
+    arrange(date)
   p_est = rstan::extract(fit, "p")$p
   p = apply(p_est, c(2,3), function(x) median(x))
   colnames(p) = paste0("D", 0:(ncol(p)-1))
